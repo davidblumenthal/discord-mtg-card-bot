@@ -1,3 +1,5 @@
+console.log('Hello world');
+/*
 const eris = require('eris');
 
 const token = process.env.BOT_TOKEN;
@@ -41,3 +43,5 @@ bot.on('error', err => {
 });
 
 bot.connect();
+
+ */

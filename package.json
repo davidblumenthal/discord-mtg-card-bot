@@ -2,10 +2,11 @@
   "name": "discord-mtg-card-bot",
   "version": "1.0.0",
   "description": "Discord Bot that shows the Magic The Gathering (MTG) card when the card name is mentioned",
-  "main": "index.js",
+  "main": "src/index.ts",
   "scripts": {
     "get-name-and-image": "curl `curl https://api.scryfall.com/bulk-data | jq -r '.data[] | select(.type == \"oracle_cards\").download_uri'` | jq '.[] | { name, image: .image_uris.large }' > nameAndImage.json",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npx ts-node src/index.ts",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,17 @@
   "dependencies": {
     "body-parser": "^1.20.1",
     "eris": "^0.17.1",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "ts-node": "^10.9.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.12",
+    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-typescript": "^7.18.6",
+    "@types/jest": "^29.4.0",
+    "babel-jest": "^29.4.3",
+    "jest": "^29.4.3",
+    "ts-jest": "^29.0.5",
+    "typescript": "^4.9.5"
   }
 }
