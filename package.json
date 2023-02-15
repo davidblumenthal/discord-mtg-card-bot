@@ -4,6 +4,7 @@
   "description": "Discord Bot that shows the Magic The Gathering (MTG) card when the card name is mentioned",
   "main": "index.js",
   "scripts": {
+    "get-name-and-image": "curl `curl https://api.scryfall.com/bulk-data | jq -r '.data[] | select(.type == \"oracle_cards\").download_uri'` | jq '.[] | { name, image: .image_uris.large }' > nameAndImage.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
