@@ -1,4 +1,4 @@
-const CANONICALIZE_REGEX = /[^a-z0-9\-]/g;
+const CANONICALIZE_REGEX = /[^a-z0-9\-_]/g;
 
 export function canonicalizeWord(inputWord : string) : string {
     return inputWord.normalize('NFKD').toLowerCase().replaceAll(CANONICALIZE_REGEX, "");
@@ -8,7 +8,8 @@ export function canonicalizeInputToArray(inputString : string) : string[] {
     return inputString
         .trim()
         .split(/\s+/)
-        .map(inputWord => canonicalizeWord(inputWord));
+        .map(inputWord => canonicalizeWord(inputWord))
+        .filter(inputWord => inputWord.length);
 }
 
 const badStartWords = new Set(["the","a"]);

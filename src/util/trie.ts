@@ -40,11 +40,11 @@ function getAllDataInPath(node: Node, path : string[]) : any[] {
         let currentNode = node;
         for (let pathIndex = startPathIndex; pathIndex < path.length; pathIndex++) {
             const word = path[pathIndex];
-            if ("data" in currentNode) {
-                outputSet.add(currentNode.data);
-            }
             if (currentNode.children[word]) {
                 currentNode = currentNode.children[word];
+                if ("data" in currentNode) {
+                    outputSet.add(currentNode.data);
+                }
             } else {
                 break;
             }

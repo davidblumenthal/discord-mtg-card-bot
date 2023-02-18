@@ -13,11 +13,11 @@ describe('trie', () => {
     describe('getData', () => {
 
         it('should find the short path', () => {
-            expect(trie.getData(["the", "orb"])).toBe("this is the orb");
+            expect(trie.getData(["orb"])).toBe("this is the orb");
         });
 
         it('should find the long path', () => {
-            expect(trie.getData(["the", "orb", "of", "darkness"])).toBe("this is the orb of darkness");
+            expect(trie.getData(["orb", "of", "darkness"])).toBe("this is the orb of darkness");
         });
 
         it('should not blow up with an extra-long path', () => {
@@ -38,6 +38,18 @@ describe('trie', () => {
                 "this is the orb",
                 "this is the orb of darkness"
             ]);
+        });
+
+        it("should return no cards with no matches", () => {
+            expect(trie.getAllDataInPath(["no", "matching", "anything"])).toStrictEqual([]);
+        });
+
+        it("should return match at the end", () => {
+            expect(trie.getAllDataInPath(["wow","orb"])).toStrictEqual(["this is the orb"]);
+        })
+
+        it("should return match at the end 2", () => {
+            expect(trie.getAllDataInPath(["wow","orb", "of","darkness"])).toStrictEqual(["this is the orb","this is the orb of darkness"]);
         })
     });
 });

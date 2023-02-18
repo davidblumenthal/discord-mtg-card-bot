@@ -1,4 +1,4 @@
 export type CardType = {
     name: string;
-    image: string;
+    image: string | null;
 };
