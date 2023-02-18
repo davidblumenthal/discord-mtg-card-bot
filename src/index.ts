@@ -30,7 +30,6 @@ bot.on('messageCreate', async (msg) => {
     if (msg.author.bot) {
         return;
     }
-    console.log(`msg=${JSON.stringify(msg, undefined, 4)}`);
     const messageText = msg.content;
     const mentionedCards = trie.getAllDataInPath(canonicalizeInputToArray(messageText)) as CardType[];
     console.log(`input from ${msg.author.username} = "${messageText}"`);
