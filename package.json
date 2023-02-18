@@ -5,7 +5,7 @@
   "main": "src/index.ts",
   "scripts": {
     "ensure-name-and-image": "(node -e \"if (! require('fs').existsSync('./nameAndImage.json')) {process.exit(1)} \" || npm run get-name-and-image)",
-    "get-name-and-image": "curl `curl https://api.scryfall.com/bulk-data | jq -r '.data[] | select(.type == \"oracle_cards\").download_uri'` | jq '.[] | { name, image: .image_uris.large }' > nameAndImage.json",
+    "get-name-and-image": "curl `curl https://api.scryfall.com/bulk-data | jq -r '.data[] | select(.type == \"oracle_cards\").download_uri'` | jq '[.[] | { name, image: .image_uris.large }]' > nameAndImage.json",
     "start": "npm run ensure-name-and-image && npx ts-node src/index.ts",
     "test": "npm run ensure-name-and-image && jest"
   },
