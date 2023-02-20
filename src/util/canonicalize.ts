@@ -7,6 +7,7 @@ export function canonicalizeWord(inputWord : string) : string {
 export function canonicalizeInputToArray(inputString : string) : string[] {
     return inputString
         .trim()
+        .replaceAll("..."," ")
         .split(/\s+/)
         .map(inputWord => canonicalizeWord(inputWord))
         .filter(inputWord => inputWord.length);
